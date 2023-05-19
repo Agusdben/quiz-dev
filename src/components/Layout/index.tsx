@@ -18,7 +18,7 @@ const Layout: React.FC<Props> = ({ children }) => {
       </Head>
       <div className={`${rubik.className} w-screen max-w-5xl m-auto min-h-screen overflow-x-hidden flex flex-col gap-4`}>
         <header>header</header>
-        <main className='flex-1'>
+        <main className='flex-1 h-full flex flex-col'>
           {children}
         </main>
         <footer>footer</footer>
