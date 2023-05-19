@@ -3,7 +3,7 @@ import { type Quiz } from '@/types/quiz'
 const QUIZZES: Quiz[] = [
   {
     id: '1',
-    language: 'JavaScript',
+    language: 'javascript',
     title: 'Quiz of JavaScript',
     difficulty: 'easy'
   }
