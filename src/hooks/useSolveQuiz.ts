@@ -12,7 +12,7 @@ interface ReturnTypes {
   currentQuestionNumber: number
   isAnswerCorrect: ({ answerIndex }: {
     answerIndex: AnswerIndexes
-  }) => boolean
+  }) => 0 | 1
   incrementCurrentQuestionIndex: () => void
 }
 
@@ -28,8 +28,8 @@ const useSolveQuiz = ({ questions }: Params): ReturnTypes => {
     setCurrentQuestionIndex(currentIndex => currentIndex + 1)
   }
 
-  const isAnswerCorrect = ({ answerIndex }: { answerIndex: AnswerIndexes }): boolean => {
-    return answerIndex === currentQuestion.correctAnswerIndex
+  const isAnswerCorrect = ({ answerIndex }: { answerIndex: AnswerIndexes }): 0 | 1 => {
+    return answerIndex === currentQuestion.correctAnswerIndex ? 1 : 0
   }
 
   return {
