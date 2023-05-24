@@ -7,6 +7,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: '#93c5fd',
+        text: '#fffff0',
+        'black-800': '#09090b'
+      },
       gridTemplateColumns: {
         'auto-fill-md': 'repeat(auto-fill, minmax(20rem, 1fr))'
       }
