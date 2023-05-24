@@ -1,50 +1,19 @@
-import { type Quiz } from '@/types/quiz'
-import { type GetStaticProps } from 'next'
+import Logo from '@/components/Logo'
 import Link from 'next/link'
 
-interface Props {
-  quizzes: Quiz[]
-}
-
-const Home: React.FC<Props> = ({ quizzes }) => {
+const Home: React.FC = () => {
   return (
-    <section className='w-full h-full flex flex-col gap-4'>
-      <header className='text-center flex  justify-between'>
-        <h3>List of quizzes</h3>
-        <form>
-          <input placeholder='Search'></input>
-        </form>
-      </header>
-      <ul className='grid grid-cols-auto-fill-md gap-4 gap-y-6'>
-        {quizzes.map(q => {
-          return (
-            <li key={q.id} className='max-w-xs w-full grid border-rose-50 border-2 border-dashed p-2 text-center hover:border-blue-400'>
-              <Link href={`quizzes/${q.id}`} className='flex flex-col hover:bg-slate-100 hover:text-black'>
-                <h3 className='text-blue-400'>{q.title}</h3>
-                <span>{q.language}</span>
-                <small>{q.difficulty}</small>
-              </Link>
-            </li>
-          )
-        })}
-      </ul>
-    </section>
+    <>
+      <section className='flex-1 w-full flex flex-col justify-center items-center gap-y-6 gap-x-14 lg:flex-row-reverse'>
+        <Logo />
+        <div className='flex flex-col gap-4'>
+          <h3 className='text-5xl text-primary'>Welcome</h3>
+          <p className='max-w-sm leading-7 '>Answer JavaScript questions and earn points for each correct answer. Try to go as far as possible without making any mistakes.</p>
+          <Link className='bg-primary w-fit px-4 py-2 text-black-800 font-bold hover:scale-110 hover:brightness-150 transition-all' href='/play'>Play</Link>
+        </div>
+      </section>
+    </>
   )
-}
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  let quizzes: Quiz[] = []
-  try {
-    const res = await fetch(`${process.env.API_URL as string}/quizzes`)
-    quizzes = await res.json()
-  } catch (error) {
-    console.error()
-  }
-  return {
-    props: {
-      quizzes
-    }
-  }
 }
 
 export default Home
