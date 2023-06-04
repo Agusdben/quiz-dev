@@ -1,5 +1,5 @@
 import { type AnswerIndexes } from '@/types'
-import { type QuestionId, type Question, type Result } from '@/types/question'
+import { type QuestionId, type Question } from '@/types/question'
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL as string
 
@@ -15,10 +15,10 @@ export const getRandomQuestion = async (): Promise<Question> => {
   return question
 }
 
-export const postSolution = async ({ questionId, answerIndex }: { questionId: QuestionId, answerIndex: AnswerIndexes }): Promise<Result> => {
-  const res = await fetch(`${API_URL}/questions/verify`, {
+export const getCorrectIndex = async ({ questionId }: { questionId: QuestionId }): Promise<{ correctIndex: AnswerIndexes }> => {
+  const res = await fetch(`${API_URL}/questions/correct`, {
     method: 'POST',
-    body: JSON.stringify({ questionId, answerIndex }),
+    body: JSON.stringify({ questionId }),
     headers: {
       'Content-Type': 'application/json'
     }

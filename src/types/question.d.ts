@@ -18,7 +18,3 @@ export interface QuestionWithCorrect extends Question {
 export interface QuestionHistory extends Question {
   isCorrect: boolean
 }
-
-export interface Result {
-  isCorrect: boolean
-}

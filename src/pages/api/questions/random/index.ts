@@ -1,8 +1,9 @@
 import QUESTIONS from '@/mocks/questions'
 import { type Question } from '@/types/question'
 import type { NextApiRequest, NextApiResponse } from 'next'
+import cors from '../../cors'
 
-export default async function handler (
+async function handler (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<NextApiResponse<Question> | undefined> {
@@ -24,3 +25,5 @@ export default async function handler (
 
   res.status(200).json(question)
 }
+
+export default cors(handler)

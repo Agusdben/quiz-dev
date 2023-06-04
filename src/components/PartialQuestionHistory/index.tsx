@@ -10,7 +10,7 @@ interface States {
   partialHistory: number[]
 }
 
-const PARTIAL_LENGTH = 9
+const PARTIAL_LENGTH = 7
 
 const PartialQuestionHistory: React.FC<Props> = ({ history, currentQuestionNumber }) => {
   const [partialHistory, setPartialHistory] = useState<States['partialHistory']>([])
@@ -23,7 +23,7 @@ const PartialQuestionHistory: React.FC<Props> = ({ history, currentQuestionNumbe
   }, [history])
 
   return (
-    <div className='flex gap-4 justify-center flex-wrap my-4'>
+    <div className='flex gap-4 justify-center flex-wrap'>
       {
         partialHistory.map((questionNumber) => {
           const isCurrentQuestionUnanswered = currentQuestionNumber === questionNumber - 1

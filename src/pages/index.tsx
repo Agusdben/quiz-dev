@@ -4,7 +4,7 @@ import Link from 'next/link'
 const Home: React.FC = () => {
   return (
     <>
-      <section className='flex-1 w-full flex flex-col justify-center items-center gap-y-6 gap-x-14 lg:flex-row-reverse'>
+      <section className='flex-1 w-full flex flex-col justify-center items-center gap-y-6 gap-x-14 lg:flex-row-reverse '>
         <Logo />
         <div className='flex flex-col gap-4'>
           <h3 className='text-5xl text-primary'>Welcome</h3>

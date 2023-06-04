@@ -6,6 +6,7 @@ import HighlighterCode from '../HighlighterCode'
 
 interface Props {
   question: Question
+  gameOver: boolean
   handleResponse: ({ questionId, answerIndex }: {
     questionId: QuestionId
     answerIndex: AnswerIndexes
@@ -18,7 +19,7 @@ const ATTEMPT_STYLES = {
   1: 'bg-green-300 text-black border-green-300'
 }
 
-const InteractiveQuestion: React.FC<Props> = ({ question, handleResponse, isAttemptCorrect }) => {
+const InteractiveQuestion: React.FC<Props> = ({ question, handleResponse, isAttemptCorrect, gameOver }) => {
   const [lastAttemptIndex, setLastAttemptIndex] = useState<AnswerIndexes | undefined>(undefined)
 
   const handleAttempt = (answer: Answer): void => {
@@ -36,9 +37,9 @@ const InteractiveQuestion: React.FC<Props> = ({ question, handleResponse, isAtte
             const attemptStyles = isAttemptCorrect !== undefined && lastAttemptIndex === answer.index ? ATTEMPT_STYLES[isAttemptCorrect ? 1 : 0] : ''
             return (
               <button
-                disabled={isAttemptCorrect !== undefined}
+                disabled={gameOver}
                 key={answer.id}
-                className={`text-left border-2 p-2 hover:bg-blue-400 disabled:pointer-events-none transition-colors
+                className={`text-left border-2 p-2 hover:bg-primary hover:border-primary hover:text-black hover:scale-105 disabled:pointer-events-none transition-all
                 ${lastAttemptIndex === answer.index ? attemptStyles : ''}
                 `}
                 onClick={() => { handleAttempt(answer) }}

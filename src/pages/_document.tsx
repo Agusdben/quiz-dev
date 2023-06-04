@@ -6,6 +6,7 @@ export default function Document (): JSX.Element {
       <Head />
       <body className='bg-black-800 text-text'>
         <Main />
+        <div id='modal'/>
         <NextScript />
       </body>
     </Html>

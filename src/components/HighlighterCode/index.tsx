@@ -8,9 +8,11 @@ interface Props {
 
 const HighlighterCode: React.FC<Props> = ({ language, code }) => {
   return (
-    <SyntaxHighlighter language={language} style={vscDarkPlus}>
-      {code}
-    </SyntaxHighlighter>
+    <div className='select-none'>
+      <SyntaxHighlighter language={language} style={vscDarkPlus}>
+        {code}
+      </SyntaxHighlighter>
+    </div>
   )
 }
 
