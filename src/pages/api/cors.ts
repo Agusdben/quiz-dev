@@ -1,6 +1,6 @@
 import { type NextApiResponse } from 'next'
 
-const WHITE_LIST = ['http://localhost:3000']
+const WHITE_LIST = process.env.CORS_WHITE_LIST?.split(',') as string[]
 
 const cors = (handler: any) => (req: any, res: NextApiResponse) => {
   res.setHeader('Access-Control-Allow-Origin', WHITE_LIST)
